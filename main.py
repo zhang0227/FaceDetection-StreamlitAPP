@@ -10,10 +10,8 @@
 
 # here put the import lib
 
-from pathlib import Path
 import streamlit as st
 import os
-import argparse
 from PIL import Image
 import cv2
 
