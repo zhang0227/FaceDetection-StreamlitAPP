@@ -19,7 +19,7 @@ import cv2
 
 if __name__ == '__main__':
 
-    st.title('YOLOv5 Streamlit App')
+    st.title('Face Detection Streamlit App')
 
     
 
@@ -62,14 +62,17 @@ if __name__ == '__main__':
                 with st.spinner(text='Preparing Images'):
                     img = cv2.imread(source_name)
                     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-                    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                    #gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
                     # Detect faces
-                    faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+                    faces = face_cascade.detectMultiScale(img, 1.1, 4)
                     # Draw rectangle around the faces
                     for (x, y, w, h) in faces:
                         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+                        st.image(img[x:x+w,y:y+h])
 
-                        st.image(img)
+                    
+                    st.image(img)
+                    
 
                     st.balloons()
             else:
